@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+
+    h2!=namePage
+    form('method'='post')
+        div(class='col-md-6')
+            div(class='col-md-6')
+                label(for='serial') Serial of product
+                    input(id='serial',type='text',value='',placeholder='',name='serial' class='input-sm')
+                br()
+                label(for='name') Name
+                    input(id='name',type='text',value='',placeholder='',name='name' class='input-sm')
+                br()
+                label(for='details') Detail
+                    input(id='details',type='text',value='',placeholder='',name='details' class='input-sm')
+                br()
+                label(for='model') Model
+                    input(id='model',type='text',value='',placeholder='',name='model' class='input-sm')
+                br()
+                input(type='submit',value='Add' class='btn btn-success')

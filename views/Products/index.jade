@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+
+    h2!=message
+
+    table(class='table')
+        tr()
+            th() Name
+            th() Detail
+            th() Model
+            th() Date
+        each val in products
+            tr()
+                td() #{val.name}
+                td() #{val.detail}
+                td() #{val.model}
+                td() #{val.created.toISOString().replace(/T/, ' ').replace(/\..+/, '')}

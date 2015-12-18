@@ -13,6 +13,6 @@ block content
         each val in products
             tr()
                 td() #{val.name}
-                td() #{val.detail}
+                td() #{val.details}
                 td() #{val.model}
                 td() #{val.created.toISOString().replace(/T/, ' ').replace(/\..+/, '')}

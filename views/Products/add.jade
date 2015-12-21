@@ -3,7 +3,7 @@ extends ../layout
 block content
 
     h2!=namePage
-    form('method'='post')
+    form('method'='post', 'id'='addNewProduct')
         div(class='col-md-6')
             div(class='col-md-6')
                 label(for='serial') Serial of product
@@ -19,3 +19,11 @@ block content
                     input(id='model',type='text',value='',placeholder='',name='model' class='input-sm')
                 br()
                 input(type='submit',value='Add' class='btn btn-success')
+    script.
+        $('#addNewProduct').submit(function(event){
+            event.preventDefault();
+            var data = $( "#addNewProduct" ).serialize();
+            $.post("/api/product/add", data, function (text) {
+                alert(text);
+            });
+        });

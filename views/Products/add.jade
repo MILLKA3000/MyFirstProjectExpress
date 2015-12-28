@@ -4,8 +4,8 @@ block content
 
     h2!=namePage
     form('method'='post', 'id'='addNewProduct')
-        div(class='col-md-6')
-            div(class='col-md-6')
+        div(class='col-xs-6')
+            div(class='col-xs-6')
                 label(for='serial') Serial of product
                     input(id='serial',type='text',value='',placeholder='',name='serial' class='input-sm')
                 br()
@@ -22,8 +22,20 @@ block content
     script.
         $('#addNewProduct').submit(function(event){
             event.preventDefault();
-            var data = $( "#addNewProduct" ).serialize();
-            $.post("/api/product/add", data, function (text) {
-                alert(text);
+            var data = $("#addNewProduct").serializeArray();
+
+            $.ajax({
+                type: "POST",
+                url: "/api/product/add",
+                data: JSON.stringify(data),
+                contentType: "application/json",
+                dataType: "json",
+                success: function (data) {
+                    alert(data);
+                },
+                failure: function (errMsg) {
+                    alert(errMsg);
+                }
             });
+
         });
